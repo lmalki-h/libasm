@@ -8,5 +8,5 @@
 int	main(void)
 {
 	printf("%zi\n", ft_strlen("ab"));
-	return (1);
+	return (0);
 }
