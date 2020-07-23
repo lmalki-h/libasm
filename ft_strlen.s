@@ -1,7 +1,5 @@
-BITS 64 
-global ft_strlen
-
 SECTION .text
+	global ft_strlen
 
 ft_strlen:
 		mov	rax, rdi
