@@ -1,18 +1,19 @@
-%define READ 0
+%define READ 0 ; sys_read code
 
 section .text
 	global ft_read
-;read(rdi, rsi, rdx)
 ft_read:
 	test	rsi, rsi
-	jz	exit_error
-	mov	rax, 0 ;sys_read	
+	jz	read_error
+	
+	mov	rax, READ
 	syscall
-	cmp	rax, -9
-	je	exit_error
+	
+	cmp	rax, 0
+	jl	read_error
 	ret
 
-exit_error:
+read_error:
 	mov	rax, -1
 	ret
 

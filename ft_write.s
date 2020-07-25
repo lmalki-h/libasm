@@ -1,20 +1,19 @@
-SECTION .text
-global	ft_write
-%define WRITE 1
+%define WRITE 1 ; sys_write code
+section .text
+	global	ft_write
 
 ft_write:
 	test	rsi, rsi
-	jz	end_error
-	cmp	rdi, 0
-	jb	end_error
-	;check if fd < 0
-	mov	rax, WRITE; sys call 4
+	jz	write_error
+	
+	mov	rax, WRITE
 	syscall
-	cmp	rax, -9
-	je	end_error
-	mov	rax, rdx
+	
+	cmp	rax, 0
+	jl	write_error
 	ret
-end_error:
+
+write_error:
 	mov rax, -1
 	ret
 

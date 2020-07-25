@@ -5,7 +5,7 @@
 #define READ(a, b, c)	printf("ft_read: >%li<, read: >%li<\n", ft_read(a, b, c), read(a, b, c));
 #define STRCMP(x, y)	printf("ft_strcmp: >%i<, strcmp: >%i<\n", ft_strcmp(x, y), strcmp(x, y));
 #define STRCPY(x, y)	printf("ft_strcpy: >%s<, strcpy: >%s<\n", ft_strcpy(x, y), strcpy(x, y));
-#define STRDUP(x)	printf("ft_strdup: >%s<, strdup: >%s<\n", ft_strdup(x), strdup(x));
+#define STRDUP(x)	printf("ft_strdup: >%i<, strdup: >%s<\n", ft_strdup(x), strdup(x));
 int	main(void)
 {
 	char	*s;
@@ -62,6 +62,10 @@ int	main(void)
 	STRCPY(t, s);
 
 	/*FT_STRDUP*/
-
+	STRDUP(s);
+	//STRDUP(s2);
+	//STRDUP(s3);
+	//STRDUP(s4);
+	//STRDUP(n);
 	return (0);
 }
