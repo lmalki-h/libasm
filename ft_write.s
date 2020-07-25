@@ -1,22 +1,20 @@
 SECTION .text
-	global ft_write
+global	ft_write
+%define WRITE 1
 
 ft_write:
-	cmp rdx, 0 ;compare nbyte a 0
-	jbe exit_error ;si nbyte <= 0 exit
-	mov rbx, rdi; 1st arg to rbx
-	mov rcx, rsi ; 2nd arg to rcx
-	mov rax, 4 ; sys_write 4
-	; nbyte already in rdx
-		
-	cmp rax, 0
-	jbe exit_error
-	int 80h
-	mov rax, rdx
+	test	rsi, rsi
+	jz	end_error
+	cmp	rdi, 0
+	jb	end_error
+	;check if fd < 0
+	mov	rax, WRITE; sys call 4
+	syscall
+	cmp	rax, -9
+	je	end_error
+	mov	rax, rdx
 	ret
-
-exit_error:
-	;set errno
+end_error:
 	mov rax, -1
 	ret
 

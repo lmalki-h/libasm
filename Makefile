@@ -1,36 +1,40 @@
 NAME = libasm.a
-
-OBJS = ft_strlen.o \
-       ft_write.o \
-       ft_exit.o \
-       ft_strcmp.o \
+NAME_TEST = libasm_test
 
 CC = gcc
-NASM = nasm
-NASM_FLAGS = -f elf64
-FLAGS = -Wall -Wextra -Werror
+AS = nasm
+ASFLAGS = -f elf64
+CFLAGS = -Wall -Wextra -Werror
 
-all:	$(NAME)
+SRCS = ft_strlen.s \
+       ft_write.s \
+       ft_read.s \
+       ft_strcmp.s \
+       ft_strcpy.s \
+       ft_strdup.s \
 
-$(NAME):
-	$(NASM) $(NASM_FLAGS) ft_strlen.s
-	$(NASM) $(NASM_FLAGS) ft_write.s
-	$(NASM) $(NASM_FLAGS) ft_exit.s
-	$(NASM) $(NASM_FLAGS) ft_strcmp.s
+OBJS = $(SRCS:.s=.o)
+
+all: $(NAME) $(NAME_TEST)
+
+$(NAME): $(OBJS) Makefile
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
+
+$(NAME_TEST): $(NAME) main.c
+	$(CC) $(CFLAGS) main.c $(NAME) -o $(NAME_TEST)
+
 clean:
 	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf run_test
+	rm -rf $(NAME_TEST)
 	rm -rf main.o
+
 re:	fclean all
 
 test: all
-	$(CC) -c main.c
-	$(CC) main.o $(NAME) -o run_test
 	./run_test
 
 

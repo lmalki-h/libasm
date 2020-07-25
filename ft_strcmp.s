@@ -1,15 +1,18 @@
 SECTION .text
-	global ft_strcmp
+	global	ft_strcmp
 
 ft_strcmp:
-	;DS data segment register
-	mov ds, rdi
-	mov es, rsi
-	mov cx, 100
-	;ES extra segment register
-	;SI source index
-	;DI destination index	
-	repe cmpsb
-	mov rax, rdi
-	sub rax, rsi
-	ret
+	xor	rax, rax
+	xor	rcx, rcx
+strcmp_loop:
+	mov	al, byte [rdi + rcx]
+	mov	dh, byte [rsi + rcx]
+	cmp	al, 0
+	jz	strcmp_end
+	inc	rcx
+	cmp	al, dh
+	je	strcmp_loop
+
+strcmp_end:
+	sub	al, dh ;does not return neg values
+	ret		; havent found a solution
