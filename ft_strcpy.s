@@ -1,11 +1,20 @@
 SECTION .text
 	global ft_strcpy
-	extern	ft_strlen
 
 ft_strcpy:
-	call	ft_strlen	;get len of dest (rdi)
-	mov	rcx, rax	;set the counter (rcx) to the len of dest
-	mov	rax, rdi	;copy the pointer to dest (rdi) in the return register (rax)
-	rep	movsb		;copy rsi to rdi until rcx = 0 or rsi = 0
-	mov	BYTE [rdi], 0
+	xor	dl,dl
+	mov	rax, rdi
+
+loop:
+	cmp	byte[rsi], 0
+	jz	finish
+	mov	dl, byte [rsi]
+	mov	byte [rdi], dl
+	inc	rdi
+	inc	rsi
+	jmp	loop
+
+finish:
+	mov	dl, byte [rsi]
+	mov	byte [rdi], dl
 	ret

@@ -4,6 +4,7 @@ SECTION .text
 ft_strcmp:
 	xor	rax, rax
 	xor	rcx, rcx
+	xor	rdx, rdx
 
 cmp_next_char:
 	mov	al, byte [rdi + rcx]
@@ -15,5 +16,5 @@ cmp_next_char:
 	je	cmp_next_char
 
 end_cmp:
-	sub	al, dl ;does not return neg values
-	ret		; havent found a solution
+	sub	rax, rdx
+	ret
