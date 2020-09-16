@@ -12,6 +12,9 @@ SRCS = ft_strlen.s \
        ft_strcmp.s \
        ft_strcpy.s \
        ft_strdup.s \
+       main.c	\
+       tests/strlen_test.c \
+
 
 OBJS = $(SRCS:.s=.o)
 
