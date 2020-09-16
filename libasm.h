@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
-
+# include <stdlib.h>
 size_t		ft_write(int fildes, const void *buf, size_t nbyte);
 size_t		ft_strlen(const char *s);
 size_t		ft_read(int fildes, void *buf, size_t nbyte);
