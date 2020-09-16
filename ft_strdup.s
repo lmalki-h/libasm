@@ -2,6 +2,7 @@ SECTION	.text
 	global	ft_strdup
 	extern	ft_strlen
 	extern	ft_strcpy
+	extern	__errno_location
 	extern	malloc
 
 ft_strdup:
@@ -17,6 +18,11 @@ ft_strdup:
 	pop	rsi
 	call	ft_strcpy
 	ret
+
 malloc_error:
+	neg rax
+	mov r8, rax
+	call __errno_location
+	mov [rax], r8
 	xor	rax, rax
 	ret
