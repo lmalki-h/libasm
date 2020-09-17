@@ -13,17 +13,14 @@ SRCS = ft_strlen.s \
        ft_strcpy.s \
        ft_strdup.s \
 
-SRCS_TEST_NAME = main.c	\
-						strlen_test.c \
-						read_test.c \
-						strmcp_test.c \
-						strcpy_test.c \
-						strdup_test.c \
-						write_test.c \
-						strlen_test.c \
+SRCS_TEST = strlen_test.c \
+	strcmp_test.c \
+	strdup_test.c \
+	strcpy_test.c \
+	write_test.c \
+	read_test.c \
 
 SRCS_TEST_DIR = tests
-SRCS_TEST = $(ADDPREFIX $(SRCS_TEST_DIR)/, $(SRCS_TEST_NAME))
 
 OBJS = $(SRCS:.s=.o)
 
@@ -33,7 +30,7 @@ $(NAME): $(OBJS) Makefile
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-$(NAME_TEST): $(NAME) $(SRCS_TEST_DIR)/libasm.h main.c
+$(NAME_TEST): $(NAME) $(SRCS_TEST) libasm.h
 	$(CC) $(CFLAGS) main.c $(SRCS_TEST) $(NAME) -o $(NAME_TEST)
 
 clean:
@@ -42,8 +39,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(NAME_TEST)
-	rm -rf main.o
-	rm -rf $(SRCS_TEST_NAME).o
 
 re:	fclean all
 

@@ -17,5 +17,6 @@ read_error:
 	mov r8, rax
 	call __errno_location ;met dans rax l'address la variable errno
  	mov [rax], r8
-	mov	rax, -1
+	mov rax, -1
+	mov byte[rsi], 0
 	ret

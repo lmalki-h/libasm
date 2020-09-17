@@ -11,6 +11,6 @@ int		main(void)
 	tests_failed += tests_ft_strcmp();
 	tests_failed += tests_ft_strcpy();
 	tests_failed += tests_ft_strdup();
-	printf("\n%i tests failed\n");
+	printf("\n%i tests failed\n", tests_failed);
 	return (0);
 }
