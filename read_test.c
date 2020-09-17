@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_test.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmalki-h <lmalki-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/17 22:02:01 by lmalki-h          #+#    #+#             */
+/*   Updated: 2020/09/17 22:02:43 by lmalki-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libasm.h"
 
-int	test_ft_read(int fd, int fdcopy, int len_s)
+int		test_ft_read(int fd, int fdcopy, int len_s)
 {
-	int	test_failed;
+	int		test_failed;
 	char	*my_read;
 	char	*real_read;
-	int	my_ret;
-	int	real_ret;
+	int		my_ret;
+	int		real_ret;
 
 	test_failed = 0;
 	my_read = (char *)calloc(sizeof(char), len_s + 1);
@@ -25,7 +37,8 @@ int	test_ft_read(int fd, int fdcopy, int len_s)
 	free(real_read);
 	return (test_failed);
 }
-int	tests_ft_read(void)
+
+int		tests_ft_read(void)
 {
 	int	tests_failed;
 	int	fd;
@@ -36,19 +49,15 @@ int	tests_ft_read(void)
 	//fd = open("strlen_test.c", O_RDONLY);
 	//fdcopy = open("strlen_test.c", O_RDONLY);
 	//tests_failed += test_ft_read(fd, fdcopy, 4);
-
 	fd = open("filedoesnotexist.c", O_RDONLY);
 	fdcopy = open("filedoesnotexist.c", O_RDONLY);
 	tests_failed += test_ft_read(fd, fdcopy, 4);
-	
 	//fd = open("read_test.c", O_RDONLY);
 	//fdcopy = open("read_test.c", O_RDONLY);
 	//tests_failed += test_ft_read(fd, fdcopy, 190);
-	
 	//fd = open("Makefile", O_RDONLY);
 	//fdcopy = open("Makefile", O_RDONLY);
 	//tests_failed += test_ft_read(fd, fdcopy, -1);
-	
 	printf("\n\n");
 	return (tests_failed);
 }

@@ -1,25 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   strdup_test.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmalki-h <lmalki-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/17 22:00:37 by lmalki-h          #+#    #+#             */
+/*   Updated: 2020/09/17 22:00:39 by lmalki-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libasm.h"
 
-int	test_ft_strdup(char *s, int test_nb)
+int		test_ft_strdup(char *s, int test_nb)
 {
-	char *my_strdup;
-	char *real_strdup;
-	int	test_failed;
+	char	*my_strdup;
+	char	*real_strdup;
+	int		test_failed;
 
 	test_failed = 0;
 	my_strdup = ft_strdup(s);
 	real_strdup = strdup(s);
-	printf("test %i: my_strdup [%s] vs real strdup [%s]\n", test_nb, my_strdup, real_strdup);
+	printf("test %i: my_strdup [%s] vs real strdup [%s]\n", test_nb, my_strdup,
+	real_strdup);
 	if (strcmp(my_strdup, real_strdup) != 0)
 		test_failed = 1;
 	free(my_strdup);
 	free(real_strdup);
 	return (test_failed);
 }
-int	tests_ft_strdup(void)
+
+int		tests_ft_strdup(void)
 {
-	int	tests_failed;
-	int	i;
+	int		tests_failed;
+	int		i;
 	char	**arg_tests;
 
 	i = 0;
