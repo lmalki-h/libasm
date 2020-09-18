@@ -39,7 +39,8 @@ int		tests_ft_strcmp(void)
 	tests_failed += test_ft_strcmp("will this test work?", "");
 	tests_failed += test_ft_strcmp("a", "a");
 	tests_failed += test_ft_strcmp("", "will this correction work?");
-	tests_failed += test_ft_strcmp("this is a loooooooooongue test that should work", "this is a loooooooooongue test that should work");
+	tests_failed += test_ft_strcmp("this is a looooongue test that should work",
+	"this is a looooongue test that should work");
 	printf("\n\n");
 	return (tests_failed);
 }
