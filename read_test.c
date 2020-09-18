@@ -21,16 +21,14 @@ int		test_ft_read(int fd, int fdcopy, int len_s)
 	int		real_ret;
 
 	test_failed = 0;
-	my_read = (char *)calloc(sizeof(char), len_s + 1);
-	real_read = (char *)calloc(sizeof(char), len_s + 1);
-	my_ret = read(fd, my_read, len_s);
-	printf("ret: %i\n", my_ret);
-	fflush(0);
+	real_read = (char *)calloc(sizeof(char), (len_s + 1));
+	my_read = (char *)calloc(sizeof(char), (len_s + 1));
+	my_ret = ft_read(fd, my_read, len_s);
 	my_read[my_ret] = '\0';
-	printf("my read %s ret: %i errno: %i\n", my_read, my_ret, errno);
+	printf("my read %s ret: %i errno: %i str %s \n", my_read, my_ret, errno, strerror(errno));
 	real_ret = read(fdcopy, real_read, len_s);
 	real_read[real_ret] = '\0';
-	printf("real read %s ret: %i errno: %i\n", real_read, real_ret, errno);
+	printf("real read %s ret: %i errno: %i str %s\n", real_read, real_ret, errno, strerror(errno));
 	if (my_ret != real_ret || strcmp(my_read, real_read) != 0)
 		test_failed = 1;
 	free(my_read);
@@ -46,18 +44,19 @@ int		tests_ft_read(void)
 
 	tests_failed = 0;
 	printf("----------------- ft_read ------------\n");
-	//fd = open("strlen_test.c", O_RDONLY);
-	//fdcopy = open("strlen_test.c", O_RDONLY);
-	//tests_failed += test_ft_read(fd, fdcopy, 4);
+	fd = open("strlen_test.c", O_RDONLY);
+	fdcopy = open("strlen_test.c", O_RDONLY);
+	tests_failed += test_ft_read(fd, fdcopy, 4);
 	fd = open("filedoesnotexist.c", O_RDONLY);
 	fdcopy = open("filedoesnotexist.c", O_RDONLY);
+	printf("fd %i fdcopy %i\n", fd, fdcopy);
 	tests_failed += test_ft_read(fd, fdcopy, 4);
-	//fd = open("read_test.c", O_RDONLY);
-	//fdcopy = open("read_test.c", O_RDONLY);
-	//tests_failed += test_ft_read(fd, fdcopy, 190);
-	//fd = open("Makefile", O_RDONLY);
-	//fdcopy = open("Makefile", O_RDONLY);
-	//tests_failed += test_ft_read(fd, fdcopy, -1);
+	fd = open("read_test.c", O_RDONLY);
+	fdcopy = open("read_test.c", O_RDONLY);
+	tests_failed += test_ft_read(fd, fdcopy, 190);
+	fd = open("Makefile", O_RDONLY);
+	fdcopy = open("Makefile", O_RDONLY);
+	tests_failed += test_ft_read(fd, fdcopy, -1);
 	printf("\n\n");
 	return (tests_failed);
 }
