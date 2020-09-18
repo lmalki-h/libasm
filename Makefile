@@ -1,7 +1,7 @@
 NAME = libasm.a
 NAME_TEST = libasm_test
 
-CC = gcc
+CC = clang
 AS = nasm
 ASFLAGS = -f elf64
 CFLAGS = -Wall -Wextra -Werror
@@ -19,8 +19,6 @@ SRCS_TEST = strlen_test.c \
 	strcpy_test.c \
 	write_test.c \
 	read_test.c \
-
-SRCS_TEST_DIR = tests
 
 OBJS = $(SRCS:.s=.o)
 
