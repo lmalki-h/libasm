@@ -1,4 +1,4 @@
-# Libasm@42 - Assembly yourself
+# LibASM@42 - A tiny library of x86-64 functions
 Libasm is the first project involving an assembly language. It consists in coding a few functions of the C library in x86-64.
 
 # Installation
