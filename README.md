@@ -11,7 +11,7 @@ Libasm is the first project involving an assembly language. It consists in codin
 
 Libasm is a little static library with a few functions that were written in x86-64 using the Intel syntax.
 
-You can read the instruction [here soon]
+You can read the instruction [here](libasm.subject.en.pdf)
 
 In this project you:
 - learn about **computer architecture** and especially how the CPU works
@@ -30,4 +30,4 @@ make
 ```
 
 ## Project status
-This project has not be submitted yet.
+This project was submitted and received a 100/100 grade.
