@@ -16,9 +16,7 @@ You can read the instruction [here](libasm.subject.en.pdf)
 In this project you:
 - learn about **computer architecture** and especially how the CPU works
 - learn how to **optimize** your high-level language code
-- understand how to read assembly code and so **reverse engineer code** (when you don't have the source file)
-
-I wrote a post on how to code in assembly with a practical example and a few resources. Head here to read this post [here soon ]
+- understand how to read assembly code and so **reverse engineer code**
 
 
 ## How do I run this library?
