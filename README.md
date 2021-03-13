@@ -21,6 +21,8 @@ In this project you:
 
 ## How do I run this library?
 
+
+ **warning:**  this library was made to compile on Linux.
 ```bash
 git clone https://github.com/lmalki-h/libasm libasm/
 cd libasm/
